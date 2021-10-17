@@ -11,15 +11,9 @@ export const pageSlice = createSlice({
   name: 'page',
   initialState,
   reducers: {
-    setCurPage: (state, action) => {
-      state.page.curPage = action.payload;
-    },
-    setTotalItems: (state, action) => {
-      state.page.totalItems = action.payload;
-    },
-    setItemsPerPage: (state, action) => {
-      state.itemsPerPage = action.payload;
-    },
+    setCurPage: (state, action) => {state.curPage = action.payload},
+    setTotalItems: (state, action) => {state.itemsPerPage = action.payload},
+    setItemsPerPage: (state, action) => {state.itemsPerPage = action.payload},
     setPage: (state, action) => {
       return console.log(action.payload)||action.payload}
   },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
@@ -8,23 +8,20 @@ import Typography from '@mui/material/Typography';
 import ProductList from "./components/ProductList";
 import PaginationLink from './components/PaginationLink';
 import PaginationSelector from './components/PaginationSelector';
-import { setCurPage } from './reducers/pageSlice'
+import { setCurPage, setItemsPerPage } from './reducers/pageSlice'
 import { gql, useQuery } from '@apollo/client';
-
-import items from './products.json';
 
 const GET_PRODUCTS = gql`
   query GetProducts($offset: Number, $limit: Number) {
     products(offset: $offset, limit: $limit)
-      @rest(type: "ProductPayload", path: "/list?{args}") {
+      @rest(type: "ProductPayload", path: "/products?{args}") {
       count
-      next
       results @type(name: "Product") {
         id
         price
-        productName
+        name
         description
-        productImage
+        imageUrl
       }
     }
   }
@@ -46,11 +43,12 @@ const Title = styled(Box)(({ theme }) => ({
 
 const Products = (props) => {
 
-  const curPageNumber = props.match.params.page||1;
+  const curPageNumber = parseInt(props.match.params.page)||1;
+  const { itemsPerPage} = useSelector((state) => state.page);
   const { loading, error, data = {} } = useQuery(GET_PRODUCTS, {
-    variables: { offset: 0, limit: 8 },
+    variables: { offset: ((curPageNumber-1)*itemsPerPage), limit: itemsPerPage },
   });
-//  const {total} = useSelector((state) => state.page);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,7 +65,7 @@ const Products = (props) => {
     <Grid container  >
       <Grid item xs={8}>
         <Title>
-          <Typography variant="h6" gutterBottom component="div">All Products</Typography>
+          <Typography sx={{ fontWeight: 'bold' }} variant="h6" component="div">All Products</Typography>
           <Typography>{totalCount} products</Typography>
         </Title>
       </Grid>
@@ -78,7 +76,7 @@ const Products = (props) => {
         <ProductList items={products} />
       </Grid>
       <Grid item xs={12}>
-        <Item><PaginationLink /></Item>
+        <Item><PaginationLink totalCount={totalCount} /></Item>
       </Grid>
     </Grid>
     </Container>

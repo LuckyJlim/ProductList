@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
@@ -11,19 +12,23 @@ const ITEMS_PER_PAGE_16 = 16;
 
 
 const PaginationSelector = () => {
-  const {itemPerPage} = useSelector((state) => state.page);
+  const {itemsPerPage, curPage} = useSelector((state) => state.page);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleChange = (event) => {
-     dispatch( 
-      setItemsPerPage(event.target.value));
+    const newValue = event.target.value;
+    const newCurPage = Math.ceil(((curPage-1)*itemsPerPage+1)/newValue);
+    dispatch( 
+      setItemsPerPage(newValue));
+    history.push(`/Products/${newCurPage}`);
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl variant="standard">
         <NativeSelect
-          defaultValue={itemPerPage}
+          defaultValue={itemsPerPage}
           labelId="itemsperpage-select"
           id="itemsperpage-select"
           onChange={handleChange}

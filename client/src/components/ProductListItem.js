@@ -5,7 +5,8 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 
-export default function ProductListItem({item:{product_name, price, product_image, description}}) {
+
+export default function ProductListItem({item:{name, price, imageUrl, description}}) {
   return (
     <Card>
       <Box
@@ -13,23 +14,22 @@ export default function ProductListItem({item:{product_name, price, product_imag
           bgcolor: '#fff',
           height: 300,
           p: 1,
-          borderRadius: 0,
-          textAlign: 'center',
+          borderRadius: 0
         }}
       >
         <img
-        src={`${product_image}`}s
+        src={`${imageUrl}`}
         style={{width:'100%', height:'100%', 'object-fit': 'contain' }}
-        alt={product_name}
+        alt={name}
         loading="lazy"
       />
       </Box>
       <Divider />
-      <CardContent>
-        <Typography variant="string" color="text.secondary" noWrap>
-          {product_name}
+      <CardContent sx={{textAlign: 'left'}}>
+        <Typography variant="string" color="text.secondary" component="div" noWrap >
+          {name}
         </Typography>
-        <Typography variant="string" color="text.secondary" component="div" noWrap>
+        <Typography variant="string" color="text.secondary" component="div" noWrap >
           {description}
         </Typography>
         <Typography variant="string">

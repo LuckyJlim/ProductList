@@ -17,16 +17,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
 });
 
-const payloadMapper = {
-  ProductPayload: data => {
-    const { results, ...rests } = data || {};
-    return {
-      ...rests,
-      results: results.map(product => mapKeys(product, (v, k) => camelCase(k))),
-    };
-  },
-};
-
 const restLink = new RestLink({
   uri: '/api',
   typePatcher: {
@@ -39,12 +29,6 @@ const restLink = new RestLink({
       }
       return data;
     },
-  },
-  responseTransformer: (response, typeName) => {
-    return response.json().then(data => {
-      if (payloadMapper[typeName]) return payloadMapper[typeName](data);
-      return data;
-    });
   },
 });
 

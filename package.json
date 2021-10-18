@@ -2,14 +2,19 @@
   "name": "fullstack-test",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["client", "rest-api"],
+  "workspaces": [
+    "client",
+    "rest-api"
+  ],
   "description": "> A simple test to show us how awesome you are!",
   "main": "index.js",
   "scripts": {
     "start:back": "yarn --cwd rest-api start",
     "start:front": "yarn --cwd client start",
+    "test:back": "yarn --cwd rest-api test",
+    "test:front": "yarn --cwd client test",
     "start": "run-p -l start:*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "run-s test:*"
   },
   "repository": {
     "type": "git",

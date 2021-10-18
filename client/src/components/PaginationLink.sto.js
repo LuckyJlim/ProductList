@@ -10,5 +10,5 @@ const Template = args => <PaginationLink {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  maxItem: 8
+  maxItem: 8,
 };

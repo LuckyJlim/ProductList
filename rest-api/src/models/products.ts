@@ -1,8 +1,4 @@
-import {
-  Model,
-  DataTypes,
-  Optional,
-} from 'sequelize';
+import { Model, DataTypes, Optional } from 'sequelize';
 
 import { sequelize } from '../database';
 
@@ -30,31 +26,31 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
 }
 
 Product.init(
-	{
-		id: {
-			type: DataTypes.INTEGER,
-			autoIncrement: true,
-			primaryKey: true,
-		},
-		name: {
-			type: new DataTypes.STRING(64),
-			allowNull: false,
-		},
-		description: {
-			type: new DataTypes.STRING(128),
-			allowNull: false,
-		},
-		price: {
-			type: new DataTypes.STRING(32),
-			allowNull: false,
-		},
-		imageUrl: {
-			type: new DataTypes.STRING(256),
-			allowNull: false,
-		},
-	},
-	{
-		tableName: 'products',
-		sequelize,
-	},
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    name: {
+      type: new DataTypes.STRING(64),
+      allowNull: false,
+    },
+    description: {
+      type: new DataTypes.STRING(128),
+      allowNull: false,
+    },
+    price: {
+      type: new DataTypes.STRING(32),
+      allowNull: false,
+    },
+    imageUrl: {
+      type: new DataTypes.STRING(256),
+      allowNull: false,
+    },
+  },
+  {
+    tableName: 'products',
+    sequelize,
+  },
 );

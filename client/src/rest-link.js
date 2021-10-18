@@ -1,10 +1,7 @@
 import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
 import { RestLink } from 'apollo-link-rest';
 import { onError } from '@apollo/client/link/error';
-import mapKeys from 'lodash/mapKeys';
-import camelCase from 'lodash/camelCase';
 
-// Log any GraphQL errors or network error that occurred
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.forEach(({ message, locations, path }) =>

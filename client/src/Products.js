@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import ProductList from './components/ProductList';
 import PaginationLink from './components/PaginationLink';
 import PaginationSelector from './components/PaginationSelector';
-import { setCurPage, setItemsPerPage } from './reducers/pageSlice';
+import { setCurPage } from './reducers/pageSlice';
 import { gql, useQuery } from '@apollo/client';
 
 const GET_PRODUCTS = gql`
@@ -66,7 +66,7 @@ const Products = props => {
 
   useEffect(() => {
     dispatch(setCurPage(curPageNumber));
-  }, [curPageNumber]);
+  }, [curPageNumber, dispatch]);
 
   if (error) console.error(error);
   const { results: products, count: totalCount } = data.products || {};

@@ -10,6 +10,6 @@ const handleErrors = controller => {
   };
 };
 
-router.get('/products/', productsController.product_list);
+router.get('/products/', productsController.productList);
 
 export default router;

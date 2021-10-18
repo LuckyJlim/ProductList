@@ -11,7 +11,7 @@ export default function ProductListItem({ item: { name, price, imageUrl, descrip
       <Box
         sx={{
           bgcolor: '#fff',
-          height: 300,
+          height: 'calc(100vw * 0.20)',
           p: 1,
           borderRadius: 0,
         }}
@@ -25,7 +25,7 @@ export default function ProductListItem({ item: { name, price, imageUrl, descrip
       </Box>
       <Divider />
       <CardContent sx={{ textAlign: 'left' }}>
-        <Typography variant="string" color="text.secondary" component="div" noWrap>
+        <Typography variant="string" color="text.primary" component="div" noWrap>
           {name}
         </Typography>
         <Typography variant="string" color="text.secondary" component="div" noWrap>

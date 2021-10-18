@@ -40,20 +40,25 @@ const Title = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const ProductTitle = ({strTitle, totalCount}) => {
-  return (<Title>
-    <Typography sx={{ fontWeight: 'bold' }} variant="h6" component="div">
-      {strTitle}
-    </Typography>
-    <Typography>{totalCount} products</Typography>
-  </Title>);
-}
-
+const ProductTitle = ({ strTitle, totalCount }) => {
+  return (
+    <Title>
+      <Typography sx={{ fontWeight: 'bold' }} variant="h6" component="div">
+        {strTitle}
+      </Typography>
+      <Typography>{totalCount} products</Typography>
+    </Title>
+  );
+};
 
 const Products = props => {
   const curPageNumber = parseInt(props.match.params.page) || 1;
   const { itemsPerPage } = useSelector(state => state.page);
-  const { loading, error, data = {} } = useQuery(GET_PRODUCTS, {
+  const {
+    loading,
+    error,
+    data = {},
+  } = useQuery(GET_PRODUCTS, {
     variables: { offset: (curPageNumber - 1) * itemsPerPage, limit: itemsPerPage },
   });
 

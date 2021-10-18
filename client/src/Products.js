@@ -40,6 +40,16 @@ const Title = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const ProductTitle = ({strTitle, totalCount}) => {
+  return (<Title>
+    <Typography sx={{ fontWeight: 'bold' }} variant="h6" component="div">
+      {strTitle}
+    </Typography>
+    <Typography>{totalCount} products</Typography>
+  </Title>);
+}
+
+
 const Products = props => {
   const curPageNumber = parseInt(props.match.params.page) || 1;
   const { itemsPerPage } = useSelector(state => state.page);
@@ -61,12 +71,7 @@ const Products = props => {
     <Container sx={{ bgcolor: '#f6f6f6' }} maxWidth={false}>
       <Grid container>
         <Grid item xs={8} key="list-header-left">
-          <Title>
-            <Typography sx={{ fontWeight: 'bold' }} variant="h6" component="div">
-              All Products
-            </Typography>
-            <Typography>{totalCount} products</Typography>
-          </Title>
+          <ProductTitle strTitle="All Products" totalCount={totalCount} />
         </Grid>
         <Grid item xs={4} key="list-header-right">
           <Item>
@@ -76,7 +81,7 @@ const Products = props => {
         <Grid item xs={12} key="list-contents">
           <ProductList items={products} />
         </Grid>
-        <Grid item xs={12} key="list-footer">
+        <Grid item xs={12} sx={{ py: 3 }} key="list-footer">
           <Item>
             <PaginationLink totalCount={totalCount} />
           </Item>

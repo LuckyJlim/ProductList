@@ -12,16 +12,16 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 const endpoint = '/api';
 console.log('Sending XHR request to', endpoint);
 const oReq = new XMLHttpRequest();
-oReq.addEventListener("load", function () {
+oReq.addEventListener('load', function() {
   console.log('Api response:', this.responseText);
 });
-oReq.open("GET", endpoint);
+oReq.open('GET', endpoint);
 oReq.send();
 
 // If you want to start measuring performance in your app, pass a function

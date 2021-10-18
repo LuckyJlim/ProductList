@@ -9,6 +9,6 @@ module.exports = app => {
     createProxyMiddleware({
       target: REACT_APP_API_HOST,
       changeOrigin: true,
-    })
+    }),
   );
 };

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { client } from './rest-link';
 import Products from './Products';
@@ -14,7 +14,7 @@ function App() {
             <Route path="/" exact render={() => <Redirect to="/Products" />} />
             <Route path="/Products" exact component={Products} />
             <Route path="/Products/:page(\d+)" component={Products} />
-            <Route path='*' component={NotFound} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </Router>
       </div>

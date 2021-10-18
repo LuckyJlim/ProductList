@@ -15,25 +15,25 @@ Your task is to build a ReactJS and NodeJS powered application to:
 ## Requirements
 
 ### React
-- Usage of hooks
-- Redux for state management
-- React Router 5
-- Good component structure
-- Should be responsive
-- Good code quality
-- High Test coverage (Optional)
-- ES6 +
+- [x] Usage of hooks
+- [x] Redux for state management
+- [x] React Router 5
+- [x] Good component structure
+- [x] Should be responsive
+- [x] Good code quality
+- [ ] High Test coverage (Optional)
+- [x] ES6 +
 
 ### Node
-- Express
-- High Test coverage (Optional)
-- ES6 +
-- API should return the list of products available in the products.json  (Optional)
-  - setting up correct data models and layers
-  - use your choice of DB with Docker or in-memory DB
+- [x] Express
+- [ ] High Test coverage (Optional)
+- [x] ES6 +
+- [x] API should return the list of products available in the products.json  (Optional)
+  - [x]  setting up correct data models and layers
+  - [x]  use your choice of DB with Docker or in-memory DB
 
 ### Bonus
-- Typescript
+- [x] Typescript
 
 ## Notes
 

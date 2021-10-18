@@ -36,3 +36,4 @@ yarn start
 - Add tests
 - Remove default stories from storybook files
   - client/src/stories
+- Move Loading component to ProductList

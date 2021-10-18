@@ -5,8 +5,8 @@ import ProductListItem from './ProductListItem';
 export default function ProductList({ items, maxItem }) {
   return (
     <Grid container spacing={3}>
-      {(items || []).map((item, k) => (
-        <Grid item xs={3} key={k}>
+      {(items || []).map(item => (
+        <Grid item xs={3} key={item.id}>
           <ProductListItem item={item} />
         </Grid>
       ))}

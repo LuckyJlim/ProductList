@@ -75,18 +75,18 @@ const Products = props => {
   return (
     <Container sx={{ bgcolor: '#f6f6f6' }} maxWidth={false}>
       <Grid container>
-        <Grid item xs={8} key="list-header-left">
+        <Grid item xs={8}>
           <ProductTitle strTitle="All Products" totalCount={totalCount} />
         </Grid>
-        <Grid item xs={4} key="list-header-right">
+        <Grid item xs={4}>
           <Item>
             <PaginationSelector />
           </Item>
         </Grid>
-        <Grid item xs={12} key="list-contents">
+        <Grid item xs={12}>
           <ProductList items={products} />
         </Grid>
-        <Grid item xs={12} sx={{ py: 3 }} key="list-footer">
+        <Grid item xs={12} sx={{ py: 3 }}>
           <Item>
             <PaginationLink totalCount={totalCount} />
           </Item>

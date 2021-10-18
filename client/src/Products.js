@@ -60,7 +60,7 @@ const Products = props => {
   return (
     <Container sx={{ bgcolor: '#f6f6f6' }} maxWidth={false}>
       <Grid container>
-        <Grid item xs={8}>
+        <Grid item xs={8} key="list-header-left">
           <Title>
             <Typography sx={{ fontWeight: 'bold' }} variant="h6" component="div">
               All Products
@@ -68,15 +68,15 @@ const Products = props => {
             <Typography>{totalCount} products</Typography>
           </Title>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={4} key="list-header-right">
           <Item>
             <PaginationSelector />
           </Item>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} key="list-contents">
           <ProductList items={products} />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} key="list-footer">
           <Item>
             <PaginationLink totalCount={totalCount} />
           </Item>

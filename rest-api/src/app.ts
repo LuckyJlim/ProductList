@@ -4,7 +4,7 @@ import { errorLogger, errorResponder } from './middleware';
 
 const app = express();
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   throw new Error('BROKEN');
 });
 app.use('/api', routes);
